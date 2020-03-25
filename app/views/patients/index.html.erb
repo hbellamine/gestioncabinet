@@ -1,0 +1,30 @@
+<%= link_to "Créer un nouveau patient", new_patient_path, class: "btn btn-primary"%>
+<table class="rwd-table">
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Date de naissance</th>
+    <th>age</th>
+    <th>sexe</th>
+    <th>email</th>
+    <th>adresse</th>
+    <th>CIN</th>
+  </tr>
+  <% @patients.each do |patient| %>
+    <tr data-link="<%= patient_consultations_path(patient.id) %>">
+      <td data-th="Nom"><%= patient.nom%></td>
+      <td data-th="Prénom"><%= patient.prenom %></td>
+      <td data-th="Date de naissance"><%= patient.datedenaissance %></td>
+      <td data-th="age"><%= patient.age %></td>
+      <td data-th="sexe"><%= patient.sexe%></td>
+      <td data-th="email"><%= patient.email %></td>
+      <td data-th="adresse"><%= patient.adresse %></td>
+      <td data-th="CIN"><%= patient.cin %></td>
+    </tr>
+  <%end%>
+
+</table>
+
+
+
+

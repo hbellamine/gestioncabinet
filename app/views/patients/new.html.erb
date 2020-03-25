@@ -1,0 +1,16 @@
+<div class="container">
+    <%= simple_form_for (@patient) do |f| %>
+
+        <%= f.input :nom %>
+        <%= f.input :prenom %>
+        <%= f.input :datedenaissance %>
+        <%= f.input :age %>
+        <%= f.input :sexe, collection: Patient.sexes.keys %>
+        <%= f.input :email %>
+        <%= f.input :telephone %>
+        <%= f.input :adresse %>
+        <%= f.input :cin %>
+        <%=f.submit "Créer nouveau Patient", class: "btn btn-primary btn-block"%>
+  <%end%>
+</div>
+

@@ -1,0 +1,2 @@
+class Useradd < ApplicationRecord
+end
