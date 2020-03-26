@@ -1,10 +1,10 @@
-<div class="creatproduct">
+<div class="container">
     <%= simple_form_for [@patient,@consultation] do |f| %>
 
         <%= f.input :date, label: "Date de consultation" %>
-        <%= f.input :motif %>
-        <%= f.input :examenclinique %>
-        <%= f.input :examencomplementaire %>
+        <%= f.input :motif, label: "Motif de consultation" %>
+        <%= f.input :examenclinique, label: "Examen Clinique" %>
+        <%= f.input :examencomplementaire, label: "Examen Complémentaire" %>
         <%= f.input :pictures, as: :file, input_html: { multiple: true } %>
         <%=f.submit%>
   <%end%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_230318) do
+ActiveRecord::Schema.define(version: 2020_03_26_123022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_230318) do
   create_table "consultations", force: :cascade do |t|
     t.date "date"
     t.string "motif"
-    t.string "examenclinique"
-    t.string "examencomplementaire"
+    t.text "examenclinique"
+    t.text "examencomplementaire"
     t.string "pictures"
     t.bigint "patient_id"
     t.datetime "created_at", null: false
@@ -49,13 +49,16 @@ ActiveRecord::Schema.define(version: 2020_03_25_230318) do
   end
 
   create_table "medicaments", force: :cascade do |t|
-    t.string "duree"
     t.string "nom"
-    t.string "dose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "ordonnance_id"
-    t.index ["ordonnance_id"], name: "index_medicaments_on_ordonnance_id"
+    t.string "molecule"
+    t.string "dosage"
+    t.string "unite"
+    t.string "forme"
+    t.string "presentation"
+    t.string "ppv"
+    t.string "remboursement"
   end
 
   create_table "ordonnances", force: :cascade do |t|
@@ -96,7 +99,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_230318) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "consultations", "patients"
-  add_foreign_key "medicaments", "ordonnances"
   add_foreign_key "ordonnances", "patients"
   add_foreign_key "patients", "users"
 end

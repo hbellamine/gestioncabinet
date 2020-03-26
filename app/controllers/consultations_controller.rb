@@ -1,12 +1,14 @@
 class ConsultationsController < ApplicationController
   def index
-    @consultations = Consultation.where(patient_id: params[:patient_id])
+    @consultations = Consultation.where(patient_id: params[:patient_id]).order('date DESC')
     @patient = Patient.find(params[:patient_id])
   end
 
   def create
     @consultation = Consultation.new(params_consultation)
+    @consultation.patient = Patient.find(params[:patient_id])
     @consultation.save
+
     redirect_to patient_consultations_path(params[:patient_id])
   end
 
@@ -19,6 +21,8 @@ class ConsultationsController < ApplicationController
   end
 
   def show
+    @consultation = Consultation.find(params[:id])
+    @patient = Patient.find(params[:patient_id])
   end
 
 

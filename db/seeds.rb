@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Medicament.destroy_all
+
+
+require 'csv'
+
+csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
+filepath    = 'app/assets/images/medicaments.csv'
+
+
+
+CSV.foreach(filepath, csv_options) do |row|
+  Medicament.create(nom: row[0], molecule: row['Molecule'],dosage: row['Dosage'],unite: row['Unite'],forme: row['Forme'],presentation: row['Presentation'],ppv: row['PPV'],remboursement: row['Remboursement'])
+end
+

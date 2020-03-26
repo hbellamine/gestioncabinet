@@ -1,4 +1,5 @@
 <%= link_to "Créer une nouvelle consultation", new_patient_consultation_path, class: "btn btn-primary"%>
+<%= link_to "Retour",patients_path, class: "btn btn-primary" %>
 <h1> Liste des consultations de <%= @patient.nom %> <%= @patient.prenom%></h1>
 <table class="rwd-table">
   <tr>
@@ -8,7 +9,7 @@
     <th>Examen Complémentaire</th>
   </tr>
   <% @consultations.each do |consultation| %>
-    <tr data-link="<%= patient_consultations_path(patient.id) %>">
+    <tr data-link="<%= patient_consultation_path(@patient.id,consultation.id) %>">
       <td data-th="Date de consultation"><%= consultation.date%></td>
       <td data-th="Examen Clinique"><%= consultation.motif %></td>
       <td data-th="Date de naissance"><%= consultation.examenclinique %></td>

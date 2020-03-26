@@ -1,2 +1,12 @@
-<h1>Consultations#show</h1>
-<p>Find me in app/views/consultations/show.html.erb</p>
+<%= link_to "Retour",  patient_consultations_path, class: "btn btn-primary" %>
+<%= @patient.nom %>
+<%= @patient.prenom %>
+<%= @consultation.date %>
+<%= @consultation.motif %>
+<%= @consultation.examenclinique %>
+<%= @consultation.examencomplementaire %>
+  <% if @consultation.pictures.attachments.present? %>
+    <% @consultation.pictures.each do |consultation| %>
+      <%= cl_image_tag consultation.key, height: 600, width: 400, crop: :fill %>
+    <%end%>
+  <% end %>
