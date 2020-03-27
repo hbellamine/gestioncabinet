@@ -1,6 +1,11 @@
 class PatientsController < ApplicationController
   def index
-    @patients = Patient.all
+  if !params[:search].nil? and params[:search] != ""
+    @patients = Patient.all.search_by_nom_and_cin(params[:search])
+  else
+     @patients = Patient.all.order('nom ASC')
+  end
+
   end
 
   def create
