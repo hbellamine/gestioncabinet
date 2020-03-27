@@ -1,0 +1,31 @@
+<h1> Création de l'ordonnance de <%= @patient.nom %> <%= @patient.prenom%></h1>
+<table class="rwd-table" style="font-size: 12px;">
+  <tr>
+    <th>Nom</th>
+    <th>Molecule</th>
+    <th>Dosage</th>
+    <th>Unite</th>
+    <th>Forme</th>
+    <th>Présentation</th>
+    <th>PPV</th>
+    <th>Remboursement</th>
+    <th>Ajouter à l'ordonnance?</th>
+  </tr>
+  <% @medicaments.each do |medicament| %>
+  <tr>
+      <td data-th="Nom"><%= medicament.nom%></td>
+      <td data-th="Molecule"><%= medicament.molecule%></td>
+      <td data-th="Dosage"><%= medicament.dosage %></td>
+      <td data-th="Unite"><%= medicament.unite %></td>
+      <td data-th="Forme"><%= medicament.forme %></td>
+      <td data-th="Présentation"><%= medicament.presentation %></td>
+      <td data-th="PPV"><%= medicament.ppv %></td>
+      <td data-th="Remboursement"><%= medicament.remboursement %></td>
+      <td data-th="Ajouter à l'ordonnance?"><%=  %></td>
+  </tr>
+  <%end%>
+
+</table>
+
+
+

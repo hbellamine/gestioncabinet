@@ -9,7 +9,7 @@ class ConsultationsController < ApplicationController
     @consultation.patient = Patient.find(params[:patient_id])
     @consultation.save
 
-    redirect_to patient_consultations_path(params[:patient_id])
+    redirect_to new_patient_consultation_ordonnance_path(params[:patient_id],@consultation.id)
   end
 
   def new
