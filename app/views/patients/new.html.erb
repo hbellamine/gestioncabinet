@@ -4,7 +4,7 @@
         <%= f.input :nom %>
         <%= f.input :prenom %>
         <%= f.input :datedenaissance %>
-        <%= f.input :age %>
+        <%= f.input :age, :start_year=>1930 %>
         <%= f.input :sexe, collection: Patient.sexes.keys %>
         <%= f.input :email %>
         <%= f.input :telephone %>
