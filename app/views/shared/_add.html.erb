@@ -1,43 +1,40 @@
-<center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCenter">
- Ajouter
+<center>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<%=medicament.id%>">
+  Préscrire
 </button>
 </center>
-
 <!-- Modal -->
-<div class="modal" id="ModalCenter" tabindex="-1" role="dialog" data-backdrop="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="modal<%=medicament.id%>" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel<%=medicament.id%>" aria-hidden="true">
+  <div class="modal-dialog" role="document">
 
     <div class="modal-content">
-
-
-  <%= simple_form_for [@prescription] do |f| %>
-
-
-          <div class="modal-header">
-            <center><h5 class="modal-title" id="exampleModalCenterTitle">Prescription</h5></center>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
+                  <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel<%=medicament.id%>" style="color:black;">Ajouter à l'ordonnance</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+      <%= form_tag('add_prescription', method: :patch) do %>
 
         <div class="modal-body">
+          <label style="font-size:15px; color: black;">Dose</label><br>
+          <input style="border:solid;" type="text"  name="dose"><br>
 
-          <%= f.input :dose %>
-          <%= f.input :duree %>
+          <br><label style="font-size:15px; color: black;">Durée de prise</label><br>
+          <input style="border:solid;" type="text"  name="duree">
+          <input type="hidden" name="medicament_id" value="<%=medicament.id%>" %>
 
 
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <%= f.submit "Valider", class: "btn btn-primary" %>
+            <%= submit_tag "Valider", class: "btn btn-primary" %>
         </div>
 
       <% end %>
 
     </div>
-
   </div>
 </div>
 
