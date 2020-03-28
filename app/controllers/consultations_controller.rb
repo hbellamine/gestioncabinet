@@ -23,6 +23,9 @@ class ConsultationsController < ApplicationController
   def show
     @consultation = Consultation.find(params[:id])
     @patient = Patient.find(params[:patient_id])
+    @ordonnance = Ordonnance.where(consultation_id: @consultation.id)
+    @prescriptions = Prescription.where(ordonnance_id: @ordonnance.ids)
+
   end
 
 

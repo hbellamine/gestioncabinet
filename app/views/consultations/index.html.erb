@@ -1,5 +1,6 @@
+<div style="margin:20px">
 <%= link_to "Créer une nouvelle consultation", new_patient_consultation_path, class: "btn btn-primary"%>
-<%= link_to "Retour",patients_path, class: "btn btn-primary" %>
+<%= link_to "Retour",patients_path, class: "btn btn-danger" %>
 <h1> Liste des consultations de <%= @patient.nom %> <%= @patient.prenom%></h1>
 <table class="rwd-table">
   <tr>
@@ -19,7 +20,7 @@
   <%end%>
 
 </table>
-
+</div>
 
 
 

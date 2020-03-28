@@ -1,12 +1,70 @@
-<%= link_to "Retour",  patient_consultations_path, class: "btn btn-primary" %>
-<%= @patient.nom %>
-<%= @patient.prenom %>
-<%= @consultation.date %>
-<%= @consultation.motif %>
-<%= @consultation.examenclinique %>
-<%= @consultation.examencomplementaire %>
+<%= link_to "Retour",  patient_consultations_path, class: "btn btn-danger" %>
+
+    <div class="ordonnance" style="width:60%;margin:20px;" >
+
+      <table class="table table-hover" style="border: solid; border-style: light; border-width: 1px; border-color: lighgray; background-color: white; box-shadow: 2px 2px 2px lighgray;">
+        <thead>
+          <tr>
+            <th scope="col">Nom du patient</th>
+            <th scope="col">Prénom du patient</th>
+            <th scope="col">Date de consultation</th>
+            <th scope="col">Motif de consultation </th>
+            <th scope="col">Examen clinique </th>
+            <th scope="col">Examen complémentaire </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @patient.nom %></td>
+            <td><%= @patient.prenom %></td>
+            <td><%= @consultation.date %></td>
+            <td><%= @consultation.motif %></td>
+            <td><%= @consultation.examenclinique %></td>
+            <td><%= @consultation.examencomplementaire %></td>
+          </tr>
+        </tbody>
+
+      </table>
+
   <% if @consultation.pictures.attachments.present? %>
     <% @consultation.pictures.each do |consultation| %>
       <%= cl_image_tag consultation.key, height: 600, width: 400, crop: :fill %>
     <%end%>
   <% end %>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="ordonnance" style="width:60%;margin:20px;" >
+            <h1>Ordonnance du patient : <%= @patient.nom %> <%= @patient.prenom %> suite à la consultation du <%=@consultation.date%> </h1>
+
+      <table class="table table-hover" style="border: solid; border-style: light; border-width: 1px; border-color: lighgray; background-color: white; box-shadow: 2px 2px 2px lighgray;">
+        <thead>
+          <tr>
+            <th scope="col">Nom du médicament</th>
+            <th scope="col">Dose</th>
+            <th scope="col">Durée</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@prescriptions.each do |prescription|%>
+          <tr>
+            <td><%= Medicament.find(prescription.medicament_id).nom%></td>
+            <td><%= prescription.dose%></td>
+            <td><%= prescription.duree%></td>
+          </tr>
+        </tbody>
+        <%end%>
+      </table>
+
+
+
+    </div>
