@@ -2,15 +2,15 @@
     <%= simple_form_for (@patient) do |f| %>
 
         <%= f.input :nom %>
-        <%= f.input :prenom %>
-        <%= f.input :datedenaissance, as: :string, input_html: { class: "datepicker"} %>
-        <%= f.input :age %>
+        <%= f.input :prenom, label: "Prénom" %>
+        <%= f.input :datedenaissance, label:"Date de naissance", as: :string, input_html: { class: "datepicker"} %>
         <%= f.input :sexe, collection: Patient.sexes.keys %>
-        <%= f.input :email %>
-        <%= f.input :telephone %>
-        <%= f.input :adresse %>
-        <%= f.input :cin %>
-        <%=f.submit "Créer nouveau Patient", class: "btn btn-primary btn-block"%>
+        <%= f.input :email, label: "E-mail" %>
+        <%= f.input :telephone, label: "Téléphone" %>
+        <%= f.input :adresse, label: "Adresse"%>
+        <%= f.input :cin, label: "CIN" %>
+        <%=f.submit "Sauvegarder", class: "btn btn-primary btn-block"%>
+        <%= link_to "Retour", root_path, class:"btn btn-danger btn-block"%>
   <%end%>
 </div>
 

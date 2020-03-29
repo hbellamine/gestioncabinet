@@ -11,6 +11,7 @@ class PatientsController < ApplicationController
   def create
    @patient = Patient.new(params_patient)
     @patient.user = current_user
+    @patient.age = Date.current.year - params[:patient][:datedenaissance].last(4).to_i
      @patient.save
 
     authorize @patient

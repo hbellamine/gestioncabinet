@@ -1,3 +1,4 @@
+<div class="container">
 <%= link_to "Créer un nouveau patient", new_patient_path, class: "btn btn-primary"%>
  <%= form_tag(patients_path, :method => "get") do %>
     <div class="d-flex" style="margin-top:20px;box-shadow: 2px 2px 5px lightgray;">
@@ -6,32 +7,34 @@
       <%end%>
     </div>
 
-<table class="rwd-table">
+<table class="rwd-table" style="width: 100%">
   <tr>
     <th>Nom</th>
     <th>Prénom</th>
     <th>Date de naissance</th>
-    <th>age</th>
-    <th>sexe</th>
-    <th>email</th>
-    <th>adresse</th>
+    <th>Age</th>
+    <th>Sexe</th>
+    <th>Email</th>
+    <th>Adresse</th>
     <th>CIN</th>
+    <th>Détail</th>
   </tr>
   <% @patients.each do |patient| %>
     <tr data-link="<%= patient_consultations_path(patient.id) %>">
-      <td data-th="Nom"><%= patient.nom%></td>
+      <td data-th="Nom"><%= patient.nom%>
       <td data-th="Prénom"><%= patient.prenom %></td>
       <td data-th="Date de naissance"><%= patient.datedenaissance %></td>
-      <td data-th="age"><%= patient.age %></td>
-      <td data-th="sexe"><%= patient.sexe%></td>
-      <td data-th="email"><%= patient.email %></td>
-      <td data-th="adresse"><%= patient.adresse %></td>
+      <td data-th="Age"><%= patient.age %></td>
+      <td data-th="Sexe"><%= patient.sexe%></td>
+      <td data-th="Email"><%= patient.email %></td>
+      <td data-th="Adresse"><%= patient.adresse %></td>
       <td data-th="CIN"><%= patient.cin %></td>
+      <td data-th="Détail"><%= link_to "Consultations",patient_consultations_path(patient.id), class: "btn btn-primary"%></td>
     </tr>
   <%end%>
 
 </table>
 
-
+</div>
 
 
