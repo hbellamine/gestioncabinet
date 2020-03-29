@@ -1,9 +1,9 @@
 class PatientsController < ApplicationController
   def index
   if !params[:search].nil? and params[:search] != ""
-    @patients = Patient.where(user_id: current_user.id).search_by_nom_and_cin(params[:search])
+    @patients = policy_scope(Patient).search_by_nom_and_cin(params[:search])
   else
-     @patients = Patient.where(user_id: current_user.id).all.order('nom ASC')
+     @patients = policy_scope(Patient).all.order('nom ASC')
   end
 
   end
@@ -13,13 +13,16 @@ class PatientsController < ApplicationController
     @patient.user = current_user
      @patient.save
 
-
+    authorize @patient
    redirect_to patients_path
 
   end
 
   def new
+
     @patient = Patient.new
+    authorize @patient
+
   end
 
   def destroy
