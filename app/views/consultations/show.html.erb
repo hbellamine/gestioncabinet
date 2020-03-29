@@ -1,6 +1,7 @@
+<div class ="container">
 <%= link_to "Retour",  patient_consultations_path, class: "btn btn-danger" %>
 
-    <div class="ordonnance" style="width:60%;margin:20px;" >
+    <div class="ordonnance" style="width:100%" >
 
         <table class="rwd-table" style="font-size: 20px;">
         <thead>
@@ -18,7 +19,7 @@
           <tr>
             <td data-th="Nom du patient"><%= @patient.nom %></td>
             <td data-th="Prénom du patient"><%= @patient.prenom %></td>
-            <td data-th="Date de consultation"><%= @consultation.date %></td>
+            <td data-th="Date de consultation"><%= @consultation.date.strftime("%d/%m/%Y") %></td>
             <td data-th="Motif de consultation"><%= @consultation.motif %></td>
             <td data-th="Examen clinique "><%= @consultation.examenclinique %></td>
             <td data-th="Examen comp"><%= @consultation.examencomplementaire %></td>
@@ -27,38 +28,54 @@
 
       </table>
 
+<h1>Liste des photos associées</h1>
+<div class="row" style="background-color:white; padding: 50px">
   <% if @consultation.pictures.attachments.present? %>
     <% @consultation.pictures.each do |consultation| %>
-      <%= cl_image_tag consultation.key, height: 600, width: 400, crop: :fill %>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="<%= cl_image_path consultation.key %>"  target="_blank">
+              <%= cl_image_tag consultation.key, height: 200, width: 200 %>
+              <div class="caption">
+              </div>
+            </a>
+          </div>
+        </div>
     <%end%>
-  <% end %>
+  <%end%>
+</div>
+
+
+
+
 
     </div>
 
 
 
     <div class="ordonnance" style="width:60%;margin:20px;" >
-            <h4>Ordonnance du patient : <%= @patient.nom %> <%= @patient.prenom %> suite à la consultation du <%=@consultation.date%> </h4>
+            <h4>Ordonnance du patient : <%= @patient.nom %> <%= @patient.prenom %> suite à la consultation du <%=@consultation.date.strftime("%d/%m/%Y")%> </h4>
 
-      <table class="table table-hover" style="border: solid; border-style: light; border-width: 1px; border-color: lighgray; background-color: white; box-shadow: 2px 2px 2px lighgray;">
-        <thead>
-          <tr>
-            <th scope="col">Nom du médicament</th>
-            <th scope="col">Dose</th>
-            <th scope="col">Durée</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%@prescriptions.each do |prescription|%>
-          <tr>
-            <td><%= Medicament.find(prescription.medicament_id).nom%></td>
-            <td><%= prescription.dose%></td>
-            <td><%= prescription.duree%></td>
-          </tr>
-        </tbody>
-        <%end%>
-      </table>
+        <table class="table table-hover" style="border: solid; border-style: light; border-width: 1px; border-color: lighgray; background-color: white; box-shadow: 2px 2px 2px lighgray;">
+          <thead>
+            <tr>
+              <th scope="col">Nom du médicament</th>
+              <th scope="col">Dose</th>
+              <th scope="col">Durée</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%@prescriptions.each do |prescription|%>
+                  <tr>
+                    <td><%= Medicament.find(prescription.medicament_id).nom%></td>
+                    <td><%= prescription.dose%></td>
+                    <td><%= prescription.duree%></td>
+                  </tr>
+                </tbody>
+            <%end%>
+        </table>
 
 
 
     </div>
+</div>

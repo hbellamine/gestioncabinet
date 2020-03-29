@@ -1,8 +1,9 @@
+<div class="container">
 <div style="margin:20px">
-<%= link_to "Créer une nouvelle consultation", new_patient_consultation_path, class: "btn btn-primary"%>
-<%= link_to "Retour",patients_path, class: "btn btn-danger" %>
-<h1> Liste des consultations de <%= @patient.nom %> <%= @patient.prenom%></h1>
-<table class="rwd-table">
+<%= link_to "Créer une nouvelle consultation", new_patient_consultation_path, class: "btn btn-primary", style:"margin-top:20px;" %>
+<%= link_to "Retour",patients_path, class: "btn btn-danger", style:"margin-top:20px;" %>
+<h1 style="margin-top:10px"> Liste des consultations de <%= @patient.nom %> <%= @patient.prenom%></h1>
+<table class="rwd-table" style= "width: 100%">
   <tr>
     <th>Date de consultation</th>
     <th>Motif</th>
@@ -11,10 +12,10 @@
   </tr>
   <% @consultations.each do |consultation| %>
     <tr data-link="<%= patient_consultation_path(@patient.id,consultation.id) %>">
-      <td data-th="Date de consultation"><%= consultation.date%></td>
+      <td data-th="Date de consultation"><%= consultation.date.strftime("%d/%m/%Y")%></td>
       <td data-th="Examen Clinique"><%= consultation.motif %></td>
       <td data-th="Date de naissance"><%= consultation.examenclinique %></td>
-      <td data-th="Examen Complémentaire"><%= consultation.examencomplementaire %></td>
+      <td data-th="Examen Comp"><%= consultation.examencomplementaire %></td>
 
     </tr>
   <%end%>
@@ -24,3 +25,4 @@
 
 
 
+</div>

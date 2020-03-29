@@ -6,6 +6,6 @@
         <%= f.input :examenclinique, label: "Examen Clinique" %>
         <%= f.input :examencomplementaire, label: "Examen Complémentaire" %>
         <%= f.input :pictures, as: :file, input_html: { multiple: true } %>
-        <%=f.submit%>
+        <%=f.submit "Créer consultation", class: "btn btn-primary btn-block"%>
   <%end%>
 </div>
