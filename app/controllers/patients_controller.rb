@@ -1,9 +1,9 @@
 class PatientsController < ApplicationController
   def index
   if !params[:search].nil? and params[:search] != ""
-    @patients = Patient.all.search_by_nom_and_cin(params[:search])
+    @patients = Patient.where(user_id: current_user.id).search_by_nom_and_cin(params[:search])
   else
-     @patients = Patient.all.order('nom ASC')
+     @patients = Patient.where(user_id: current_user.id).all.order('nom ASC')
   end
 
   end
