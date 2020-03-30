@@ -26,9 +26,15 @@ class MedicamentsController < ApplicationController
   end
 
   def new
+    @medicament = Medicament.new
+    authorize @medicament
   end
 
   def create
+    @medicament = Medicament.new(medicament_params)
+    @medicament.save
+    authorize @medicament
+    redirect_to patient_consultation_ordonnance_medicaments_path
   end
 
   def edit
@@ -40,7 +46,9 @@ class MedicamentsController < ApplicationController
   def show
   end
 
-
-
+private
+  def medicament_params
+    params.require(:medicament).permit(:nom, :molecule, :dosage, :unite, :forme, :presentation, :ppv, :remboursement)
+  end
 end
 

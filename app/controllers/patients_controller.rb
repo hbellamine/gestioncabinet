@@ -30,7 +30,6 @@ class PatientsController < ApplicationController
     redirect_to patients_path
   end
 
-
   def new
 
     @patient = Patient.new

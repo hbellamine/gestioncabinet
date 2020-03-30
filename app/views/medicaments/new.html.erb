@@ -1,1 +1,18 @@
-<% render 'shared/add'%>
+<div class="container">
+    <%= simple_form_for (@medicament), method: :post, url: patient_consultation_ordonnance_medicaments_path do |f| %>
+
+        <%= f.input :nom %>
+        <%= f.input :molecule, label: "Molécule" %>
+        <%= f.input :dosage, label:"Dosage" %>
+        <%= f.input :unite, label:"Unité" %>
+        <%= f.input :forme, label: "Forme" %>
+        <%= f.input :presentation, label: "Présentention" %>
+        <%= f.input :ppv, label: "Prix de vente"%>
+        <%= f.input :remboursement, label: "remboursement" %>
+        <%=f.submit "Sauvegarder", class: "btn btn-primary btn-block"%>
+        <%= link_to "Retour", root_path, class:"btn btn-danger btn-block"%>
+  <%end%>
+</div>
+
+
+

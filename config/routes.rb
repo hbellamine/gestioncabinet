@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 resources :patients do
   resources :consultations do
     resources :ordonnances do
-      resources :medicaments
+      resources :medicaments, only: [:index, :new, :create]
       patch 'add_prescription', to: 'medicaments#add_prescription' , as: 'add_prescription'
     end
     resources :prescriptions, only: [:new, :create]

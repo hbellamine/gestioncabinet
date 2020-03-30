@@ -1,4 +1,7 @@
 <h1> Création de l'ordonnance de <%= @patient.nom %> <%= @patient.prenom%></h1>
+
+<%= link_to "Ajouter un médicament", new_patient_consultation_ordonnance_medicament_path, class: "btn btn-success"%>
+
     <% @prescriptions.each do |prescription|%>
       <p style="color:white; font-size: bold;"> Liste des médicaments prescrits </p>
 
