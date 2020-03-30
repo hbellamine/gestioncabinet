@@ -5,6 +5,15 @@ class PatientPolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+      return true
+  end
+
+  def update?
+  return true
+  end
+
+
   def new?
     return true
   end

@@ -14,6 +14,7 @@
     <th>Date de naissance</th>
     <th>Age</th>
     <th>Sexe</th>
+    <th>Téléphone</th>
     <th>Email</th>
     <th>Adresse</th>
     <th>CIN</th>
@@ -21,11 +22,16 @@
   </tr>
   <% @patients.each do |patient| %>
     <tr data-link="<%= patient_consultations_path(patient.id) %>">
-      <td data-th="Nom"><%= patient.nom%>
+
+      <td data-th="Nom">
+        <%= link_to edit_patient_path(patient.id) do %>
+          <i class="fas fa-user-edit"></i>
+        <%end%><%= patient.nom%>
       <td data-th="Prénom"><%= patient.prenom %></td>
       <td data-th="Date de naissance"><%= patient.datedenaissance %></td>
       <td data-th="Age"><%= patient.age %></td>
       <td data-th="Sexe"><%= patient.sexe%></td>
+      <td data-th="Tél"><%= patient.telephone%></td>
       <td data-th="Email"><%= patient.email %></td>
       <td data-th="Adresse"><%= patient.adresse %></td>
       <td data-th="CIN"><%= patient.cin %></td>

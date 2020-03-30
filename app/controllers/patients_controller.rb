@@ -16,8 +16,20 @@ class PatientsController < ApplicationController
 
     authorize @patient
    redirect_to patients_path
-
   end
+
+  def edit
+    @patient = Patient.find(params[:id])
+    authorize @patient
+  end
+
+  def update
+    @patient = Patient.find(params[:id])
+    @patient.update(params_patient)
+    authorize @patient
+    redirect_to patients_path
+  end
+
 
   def new
 
@@ -36,7 +48,7 @@ class PatientsController < ApplicationController
 private
 
  def params_patient
-    params.require(:patient).permit(:nom, :prenom, :datedenaissance, :age, :sexe, :email, :adresse, :cin)
+    params.require(:patient).permit(:nom, :prenom, :datedenaissance, :age, :sexe, :telephone, :email, :adresse, :cin)
   end
 
 
