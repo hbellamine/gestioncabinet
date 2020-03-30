@@ -1,7 +1,10 @@
 <h1> Création de l'ordonnance de <%= @patient.nom %> <%= @patient.prenom%></h1>
     <% @prescriptions.each do |prescription|%>
-      Nom: <%= Medicament.find(prescription.medicament_id).nom %> || Dose: <%= prescription.dose%> || Durée: <%= prescription.duree%><br>
+      <p style="color:white; font-size: bold;"> Liste des médicaments prescrits </p>
+
+    <h6 style="color:white; display:block "><i class="fas fa-tablets"></i> Nom: <%= Medicament.find(prescription.medicament_id).nom %>|| Dose: <%= prescription.dose%> || Durée: <%= prescription.duree%></h6><br>
     <%end%>
+
 <%= link_to "Fin de la consultation", patients_path, class: "btn btn-danger", notice: "L'ordonnance a bien été sauvegardé"%>
  <%= form_tag(patient_consultation_ordonnance_medicaments_path, :method => "get") do %>
     <div class="d-flex" style="margin-top:20px;box-shadow: 2px 2px 5px lightgray;">

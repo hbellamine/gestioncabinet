@@ -12,7 +12,7 @@
 
 
   <% if current_user != nil %>
-    <center><h2>Cabinet Dr <strong style="color:black;"><%=current_user.nom%></strong> <%=current_user.prenom%></h2></center>
+    <center><h2 style="color:black">Cabinet Dr <strong style="color:black;"><%=current_user.nom%></strong> <%=current_user.prenom%></h2></center>
     <%end%>
    <div class="d-none d-sm-block">
     <%= link_to destroy_user_session_path, method: :delete do %>
