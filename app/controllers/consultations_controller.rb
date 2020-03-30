@@ -20,6 +20,10 @@ class ConsultationsController < ApplicationController
   end
 
   def destroy
+        @consultation = Consultation.find(params[:id])
+    @consultation.destroy
+    authorize @consultation
+    redirect_to patient_consultations_path
   end
 
   def show

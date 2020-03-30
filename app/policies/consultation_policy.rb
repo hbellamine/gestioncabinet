@@ -5,7 +5,10 @@ class ConsultationPolicy < ApplicationPolicy
     end
   end
 
-    def new?
+  def new?
+    return true
+  end
+  def destroy?
     return true
   end
 
