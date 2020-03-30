@@ -9,6 +9,7 @@
 
 <table class="rwd-table" style="width: 100%">
   <tr>
+    <th>Editer</th>
     <th>Nom</th>
     <th>Prénom</th>
     <th>Date de naissance</th>
@@ -19,14 +20,15 @@
     <th>Adresse</th>
     <th>CIN</th>
     <th>Détail</th>
+    <th>Supprimer</th>
   </tr>
   <% @patients.each do |patient| %>
-    <tr data-link="<%= patient_consultations_path(patient.id) %>">
 
+      <td data-th="editer"><%= link_to edit_patient_path(patient.id) do %>
+         <h3> <i class="fas fa-user-edit"></i></h3>
+        <%end%></td>
       <td data-th="Nom">
-        <%= link_to edit_patient_path(patient.id) do %>
-          <i class="fas fa-user-edit"></i>
-        <%end%><%= patient.nom%>
+<%= patient.nom%>
       <td data-th="Prénom"><%= patient.prenom %></td>
       <td data-th="Date de naissance"><%= patient.datedenaissance %></td>
       <td data-th="Age"><%= patient.age %></td>
@@ -36,6 +38,9 @@
       <td data-th="Adresse"><%= patient.adresse %></td>
       <td data-th="CIN"><%= patient.cin %></td>
       <td data-th="Détail"><%= link_to "Consultations",patient_consultations_path(patient.id), class: "btn btn-primary"%></td>
+
+       <td data-th="Supprimer">   <%= link_to "Supprimer", patient_path(patient.id), method: :delete, data: {confirm: "Etes vous sûr?"}, class: "btn btn-danger"%>
+        </td>
     </tr>
   <%end%>
 

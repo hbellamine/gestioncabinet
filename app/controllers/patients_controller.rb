@@ -25,6 +25,7 @@ class PatientsController < ApplicationController
 
   def update
     @patient = Patient.find(params[:id])
+    @patient.age = Date.current.year - params[:patient][:datedenaissance].last(4).to_i
     @patient.update(params_patient)
     authorize @patient
     redirect_to patients_path
@@ -38,6 +39,10 @@ class PatientsController < ApplicationController
   end
 
   def destroy
+    @patient = Patient.find(params[:id])
+    @patient.destroy
+    authorize @patient
+    redirect_to patients_path
   end
 
   def show

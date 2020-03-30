@@ -17,6 +17,9 @@ class PatientPolicy < ApplicationPolicy
   def new?
     return true
   end
+    def destroy?
+    return true
+  end
 
     def create?
     record.user == user
