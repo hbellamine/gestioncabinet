@@ -54,7 +54,7 @@ class ConsultationsController < ApplicationController
   private
 
  def params_consultation
-    params.require(:consultation).permit(:date, :motif, :examenclinique,:examencomplementaire, pictures: [])
+    params.require(:consultation).permit(:date, :motif, :diagfinal, :examenclinique,:examencomplementaire, pictures: [])
   end
 
 end

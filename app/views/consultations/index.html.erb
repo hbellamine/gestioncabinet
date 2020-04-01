@@ -10,6 +10,7 @@
     <th>Motif</th>
     <th>Examen Clinique</th>
     <th>Examen Complémentaire</th>
+    <th>Diagnostic Final</th>
     <th>Détail</th>
     <th>Supprimer</th>
   </tr>
@@ -22,6 +23,7 @@
       <td data-th="Examen Clinique"><%= consultation.motif %></td>
       <td data-th="Date de naissance"><%= consultation.examenclinique %></td>
       <td data-th="Examen Comp"><%= consultation.examencomplementaire %></td>
+      <td data-th="Diag Final"><%= consultation.diagfinal %></td>
       <td data-th="detail"><%= link_to "Détails consultation",patient_consultation_path(@patient.id,consultation.id),class: "btn btn-primary"%></td>
       <td data-th="Supprimer"><%= link_to "Supprimer", patient_consultation_path(@patient.id,consultation.id), method: :delete, data: {confirm: "Etes vous sûr?"}, class: "btn btn-danger"%>
     </tr>

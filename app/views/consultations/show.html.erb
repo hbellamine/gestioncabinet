@@ -31,12 +31,14 @@
 <h1>Liste des photos associées</h1>
 <div class="row" style="background-color:white; padding: 50px">
   <% if @consultation.pictures.attachments.present? %>
-    <% @consultation.pictures.each do |consultation| %>
+    <% @consultation.pictures.each do |picture| %>
         <div class="col-md-4">
           <div class="thumbnail">
-            <a href="<%= cl_image_path consultation.key %>"  target="_blank">
-              <%= cl_image_tag consultation.key, height: 200, width: 200 %>
+            <a href="<%= cl_image_path picture.key %>"  target="_blank">
+              <%= cl_image_tag picture.key, height: 200, width: 200 %>
               <div class="caption">
+
+
               </div>
             </a>
           </div>

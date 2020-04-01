@@ -1,5 +1,5 @@
 class Patient < ApplicationRecord
-  enum sexe: [:Homme, :Femme]
+  enum sexe: [:Masculin, :Féminin]
   has_many :consultations,dependent: :destroy
   belongs_to :user
 
