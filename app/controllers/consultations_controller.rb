@@ -13,6 +13,20 @@ class ConsultationsController < ApplicationController
     redirect_to new_patient_consultation_ordonnance_path(params[:patient_id],@consultation.id)
   end
 
+  def edit
+   @consultation = Consultation.find(params[:id])
+   @patient = Patient.find(params[:patient_id])
+    authorize @consultation
+  end
+
+  def update
+        @consultation = Consultation.find(params[:id])
+    @consultation.update(params_consultation)
+    authorize @consultation
+    redirect_to patient_consultations_path
+  end
+
+
   def new
     @consultation = Consultation.new
     @patient = Patient.find(params[:patient_id])

@@ -58,7 +58,7 @@
 
         <table class="table table-hover" style="border: solid; border-style: light; border-width: 1px; border-color: lighgray; background-color: white; box-shadow: 2px 2px 2px lighgray;">
           <thead>
-            <tr>
+            <tr style="font-weight: bold; color:rgb(100, 114, 21); font-size: 20px">
               <th scope="col">Nom du médicament</th>
               <th scope="col">Dose</th>
               <th scope="col">Durée</th>
@@ -66,7 +66,7 @@
           </thead>
           <tbody>
             <%@prescriptions.each do |prescription|%>
-                  <tr>
+                  <tr style="font-weight: bold; color:#919B59; font-size: 20px">
                     <td><%= Medicament.find(prescription.medicament_id).nom%></td>
                     <td><%= prescription.dose%></td>
                     <td><%= prescription.duree%></td>
